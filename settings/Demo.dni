@@ -1,0 +1,77 @@
+[Stack]
+FillEnabled=0
+OverflowWarningsEnabled=1
+WarningThreshold=90
+SpWarningsEnabled=1
+WarnLogOnly=1
+UseTrigger=1
+TriggerName=main
+LimitSize=0
+ByteLimit=50
+[DebugChecksum]
+Checksum=860709633
+[CallStack]
+ShowArgs=0
+[Disassembly]
+MixedMode=1
+[CallStackLog]
+Enabled=0
+[DriverProfiling]
+Enabled=0
+Mode=1
+Graph=0
+Symbiont=0
+Exclusions=
+[InterruptLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+SumSortOrder=0
+[Interrupts]
+Enabled=1
+[MemoryMap]
+Enabled=0
+Base=0
+UseAuto=0
+TypeViolation=1
+UnspecRange=1
+ActionState=1
+[Trace1]
+Enabled=0
+ShowSource=1
+[watch_formats]
+Fmt0={W}0:DispTab[n1]	1	0
+Fmt1={W}0:DispTab[n2]	1	0
+Fmt2={W}0:DispTab[n3]	1	0
+Fmt3={W}0:DispTab[n4]	1	0
+Fmt4={W}0:LCD_DisBuffer	4	3
+Fmt5={W}0:LCD_DisBuffer[0]	1	0
+Fmt6={W}0:LCD_DisBuffer[1]	1	0
+Fmt7={W}0:LCD_DisBuffer[2]	1	0
+Fmt8={W}0:LCD_DisBuffer[3]	1	0
+Fmt9={W}0:Num	1	0
+[DataSample]
+LogEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[Log file]
+LoggingEnabled=_ 0
+LogFile=_ ""
+Category=_ 0
+[TermIOLog]
+LoggingEnabled=_ 0
+LogFile=_ ""
+[Breakpoints]
+Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
+Count=1
+[Aliases]
+A0=_ "C:\Documents and Settings\Administrator\◊¿√Ê\∂Œ Ω“∫æß2\∂Œ Ω“∫æß\STM8L15x_StdPeriph_Driver\src\stm8l15x_gpio.c" ""
+A1=_ "D:\BaiduYunDownload\STM8L152-¿∂∆Ï«∂»Î Ω\¿˝≥Ã\∂Œ Ω“∫æß\∂Œ Ω“∫æß\lcd.c" ""
+A2=_ "G:\Ã‘±¶\STM8L152\¿˝≥ÃV2\IAR¿˝≥Ã\∏ﬂº∂¿˝≥Ã\∂Œ Ω“∫æß2\∂Œ Ω“∫æß\lcd.c" ""
+Count=3
+SuppressDialog=1
+[DebuggerSettings]
+DisableInterruptsWhenStepping=0
