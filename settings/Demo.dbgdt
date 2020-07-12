@@ -34,12 +34,12 @@
         
         
       <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ShowCodeCoverage>0</ShowCodeCoverage><ShowInstrProfiling>0</ShowInstrProfiling></Disassembly>
-    <WATCH_1><expressions><item>LCD-&gt;FRQ</item><item>LCD_Prescaler</item><item>LCD_DisBuffer</item><item>LCD_DisBuffer[3]</item><item>LCD_DisBuffer[2]</item><item>LCD_DisBuffer[1]</item><item>LCD_DisBuffer[0]</item><item>Num</item><item>LCD_RAMRegister_4</item><item>DispTab[n4]</item><item>DispTab[n1]</item><item>DispTab[n2]</item><item>DispTab[n3]</item><item>NumberMap[n4]</item><item>a</item><item>LCD_DisBuffer[0]</item><item>LCD_DisBuffer[1]</item><item>LCD_DisBuffer[2]</item><item>LCD_DisBuffer[3]</item><item>Num</item><item></item></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>132</item><item>150</item><item>100</item><item>161</item></col-widths></WATCH_1></Static>
+    <WATCH_1><expressions><item>LCD-&gt;FRQ</item><item>LCD_Prescaler</item><item>LCD_DisBuffer</item><item>LCD_DisBuffer[3]</item><item>LCD_DisBuffer[2]</item><item>LCD_DisBuffer[1]</item><item>LCD_DisBuffer[0]</item><item>Num</item><item>LCD_RAMRegister_4</item><item>DispTab[n4]</item><item>DispTab[n1]</item><item>DispTab[n2]</item><item>DispTab[n3]</item><item>NumberMap[n4]</item><item>a</item><item>LCD_DisBuffer[0]</item><item>LCD_DisBuffer[1]</item><item>LCD_DisBuffer[2]</item><item>LCD_DisBuffer[3]</item><item>Num</item><item/></expressions><col-names><item>Expression</item><item>Location</item><item>Type</item><item>Value</item></col-names><col-widths><item>132</item><item>150</item><item>100</item><item>161</item></col-widths></WATCH_1><Register/></Static>
     <Windows>
       
       
       
-    <Wnd1>
+    <Wnd0>
         <Tabs>
           <Tab>
             <Identity>TabID-10413-7706</Identity>
@@ -55,7 +55,7 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd1><Wnd2>
+      <SelectedTab>0</SelectedTab></Wnd0><Wnd4>
         <Tabs>
           <Tab>
             <Identity>TabID-21162-7709</Identity>
@@ -67,20 +67,20 @@
           </Tab>
         </Tabs>
         
-      <SelectedTab>0</SelectedTab></Wnd2><Wnd3><Tabs><Tab><Identity>TabID-6334-19445</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd3></Windows>
+      <SelectedTab>0</SelectedTab></Wnd4><Wnd5><Tabs><Tab><Identity>TabID-6334-19445</Identity><TabName>Watch 1</TabName><Factory>WATCH_1</Factory></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5><Wnd1><Tabs><Tab><Identity>TabID-18112-2999</Identity><TabName>Register</TabName><Factory>Register</Factory><Session><REG1>0</REG1><REG2>0</REG2><Group>32</Group><States>0</States></Session></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd1></Windows>
     <Editor>
       
       
       
       
-    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>17</YPos2><SelStart2>1264</SelStart2><SelEnd2>1264</SelEnd2></Tab><ActiveTab>0</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\lcd.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>180</SelStart2><SelEnd2>187</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\lcd.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>34</YPos2><SelStart2>1961</SelStart2><SelEnd2>1975</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\stm8l15x_it.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\stm8l15x_it.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\STM8L15x_StdPeriph_Driver\src\stm8l15x_usart.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>390</YPos2><SelStart2>16880</SelStart2><SelEnd2>16880</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\lcd.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>2</SelStart2><SelEnd2>36</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\lcd.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>34</YPos2><SelStart2>1961</SelStart2><SelEnd2>1975</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\main.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>37</YPos2><SelStart2>1548</SelStart2><SelEnd2>1548</SelEnd2></Tab><ActiveTab>2</ActiveTab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\stm8l15x_it.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\stm8l15x_it.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>0</SelStart2><SelEnd2>0</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\STM8L15x_StdPeriph_Driver\src\stm8l15x_usart.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>360</YPos2><SelStart2>16880</SelStart2><SelEnd2>16880</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\capsensor.c</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>375</SelStart2><SelEnd2>375</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\capsensor.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>0</YPos2><SelStart2>182</SelStart2><SelEnd2>182</SelEnd2></Tab><Tab><Factory>TextEditor</Factory><Filename>$WS_DIR$\STM8L15x_StdPeriph_Driver\inc\stm8l15x_exti.h</Filename><XPos>0</XPos><YPos>0</YPos><SelStart>0</SelStart><SelEnd>0</SelEnd><XPos2>0</XPos2><YPos2>249</YPos2><SelStart2>8957</SelStart2><SelEnd2>8957</SelEnd2></Tab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
     <Positions>
       
       
       
       
       
-    <Top><Row0><Sizes><Toolbar-027286A8><key>iaridepm.enu1</key></Toolbar-027286A8></Sizes></Row0><Row1><Sizes><Toolbar-071A8E50><key>debuggergui.enu1</key></Toolbar-071A8E50></Sizes></Row1></Top><Left><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>518</Bottom><Right>131</Right><x>-2</x><y>-2</y><xscreen>133</xscreen><yscreen>146</yscreen><sizeHorzCX>103906</sizeHorzCX><sizeHorzCY>198910</sizeHorzCY><sizeVertCX>103906</sizeVertCX><sizeVertCY>708447</sizeVertCY></Rect></Wnd2></Sizes></Row0></Left><Right><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>518</Bottom><Right>258</Right><x>-2</x><y>-2</y><xscreen>133</xscreen><yscreen>146</yscreen><sizeHorzCX>103906</sizeHorzCX><sizeHorzCY>198910</sizeHorzCY><sizeVertCX>203125</sizeVertCX><sizeVertCY>708447</sizeVertCY></Rect></Wnd3></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd1><Rect><Top>-2</Top><Left>-2</Left><Bottom>147</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>149</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>202997</sizeHorzCY><sizeVertCX>103906</sizeVertCX><sizeVertCY>198910</sizeVertCY></Rect></Wnd1></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+    <Top><Row0><Sizes><Toolbar-02787188><key>iaridepm.enu1</key></Toolbar-02787188></Sizes></Row0><Row1><Sizes><Toolbar-0A55E208><key>debuggergui.enu1</key></Toolbar-0A55E208></Sizes></Row1></Top><Left><Row0><Sizes><Wnd4><Rect><Top>-2</Top><Left>-2</Left><Bottom>518</Bottom><Right>131</Right><x>-2</x><y>-2</y><xscreen>133</xscreen><yscreen>146</yscreen><sizeHorzCX>103906</sizeHorzCX><sizeHorzCY>198910</sizeHorzCY><sizeVertCX>103906</sizeVertCX><sizeVertCY>708447</sizeVertCY></Rect></Wnd4></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>518</Bottom><Right>258</Right><x>-2</x><y>-2</y><xscreen>133</xscreen><yscreen>146</yscreen><sizeHorzCX>103906</sizeHorzCX><sizeHorzCY>198910</sizeHorzCY><sizeVertCX>203125</sizeVertCX><sizeVertCY>708447</sizeVertCY></Rect></Wnd5></Sizes></Row0><Row1><Sizes><Wnd1><Rect><Top>-2</Top><Left>256</Left><Bottom>518</Bottom><Right>456</Right><x>256</x><y>-2</y><xscreen>200</xscreen><yscreen>200</yscreen><sizeHorzCX>156250</sizeHorzCX><sizeHorzCY>272480</sizeHorzCY><sizeVertCX>156250</sizeVertCX><sizeVertCY>708447</sizeVertCY></Rect></Wnd1></Sizes></Row1></Right><Bottom><Row0><Sizes><Wnd0><Rect><Top>-2</Top><Left>-2</Left><Bottom>147</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>149</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>202997</sizeHorzCY><sizeVertCX>103906</sizeVertCX><sizeVertCY>198910</sizeVertCY></Rect></Wnd0></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
   </Desktop>
 </Project>
 

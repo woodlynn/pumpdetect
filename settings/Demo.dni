@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=860709633
+Checksum=-1742562446
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -29,6 +29,14 @@ GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
 SumSortOrder=0
+[DataLog]
+LogEnabled=0
+SumEnabled=0
+GraphEnabled=0
+ShowTimeLog=1
+ShowTimeSum=1
+[Breakpoints2]
+Count=0
 [Interrupts]
 Enabled=1
 [MemoryMap]
@@ -41,6 +49,8 @@ ActionState=1
 [Trace1]
 Enabled=0
 ShowSource=1
+[Simulator]
+Freq=16000000
 [watch_formats]
 Fmt0={W}0:DispTab[n1]	1	0
 Fmt1={W}0:DispTab[n2]	1	0
@@ -57,6 +67,9 @@ LogEnabled=0
 GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
+[Breakpoints]
+Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
+Count=1
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -64,9 +77,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Breakpoints]
-Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
-Count=1
 [Aliases]
 A0=_ "C:\Documents and Settings\Administrator\◊¿√Ê\∂Œ Ω“∫æß2\∂Œ Ω“∫æß\STM8L15x_StdPeriph_Driver\src\stm8l15x_gpio.c" ""
 A1=_ "D:\BaiduYunDownload\STM8L152-¿∂∆Ï«∂»Î Ω\¿˝≥Ã\∂Œ Ω“∫æß\∂Œ Ω“∫æß\lcd.c" ""
