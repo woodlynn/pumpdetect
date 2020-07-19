@@ -1,6 +1,8 @@
 
 #include "capsensor.h"
+
 unsigned char Capchargeflag,Interruptflag;
+u16 TimCap,TimCapBefore,TimCapAfter,TimCap_H,TimCap_L;
 void delayms(uint16_t nCount){
   while (nCount != 0)
   {   
@@ -14,25 +16,27 @@ void clearCapchargeflag(void){
 
 void Capinit (void){
 	GPIO_Init(  Cap_Port,Cap_Charge_Pin,     GPIO_Mode_Out_PP_High_Fast);
-	GPIO_Init(  Cap_Port,Cap_Detect_Pin,     GPIO_Mode_In_PU_IT);
+	GPIO_Init(  Cap_Port,Cap_Detect_Pin,     GPIO_Mode_In_FL_IT);
     EXTI_SetPinSensitivity (Cap_Detect_Pin,  EXTI_Trigger_Rising);
-    enableInterrupts();//使能中断
+
 
 }
 void CapCharge(void){
-
+        GPIO_Init(Cap_Port,Cap_Charge_Pin, GPIO_Mode_Out_PP_Low_Fast);  
 	GPIO_ResetBits(Cap_Port,Cap_Charge_Pin);
-	delayms(10000);
-        GPIO_Init(Cap_Port,Cap_Charge_Pin,GPIO_Mode_In_FL_No_IT );
-	
         
-        
+	                            delayms(1000);
+
+        enableInterrupts();//使能中断
+        delayms(100);
+        GPIO_Init(Cap_Port,Cap_Charge_Pin,GPIO_Mode_In_FL_No_IT );        
+            delayms(1000);
 }
 
 
 u16 GetCap(void){
-        u16 TimCap_H,TimCap_L,TimCap,TimCapBefore,TimCapAfter;
-	Capchargeflag=1;       
+
+	Interruptflag=1;       
         TimCap_H = TIM3->CNTRH;
 	TimCap_L = TIM3->CNTRL;
 	
@@ -41,13 +45,12 @@ u16 GetCap(void){
 	CapCharge();	//Pull down capcharger Pin 
 	//Wait the interrupt
 
-        while (Interruptflag);
+ //       while (Interruptflag);
         	
-	TimCap_H = TIM3->CNTRH;
-	TimCap_L = TIM3->CNTRL;
-	
-	TimCapAfter = ((TimCap_H&0xff)<<8)|((TimCap_L&0xff)<<0);
+
 	TimCap=TimCapAfter-TimCapBefore;
+        disableInterrupts();
+        
         return TimCap; 
 
 }

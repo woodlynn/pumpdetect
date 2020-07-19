@@ -1629,6 +1629,9 @@
       <name>$PROJ_DIR$\stm8l15x_conf.h</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\stm8l15x_it.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\stm8l15x_it.h</name>
     </file>
   </group>

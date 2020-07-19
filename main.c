@@ -70,7 +70,7 @@ int main( void )
      CapValue=GetCap();
      data_convertor(CapValue);
      Display();
-     Delay(1000);
+     Delay(10000000);
     
      
     }
