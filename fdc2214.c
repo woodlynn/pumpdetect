@@ -1,138 +1,20 @@
 #include "fdc2214.h"
-#include "delay.h"
-#include "led.h"
+
 
 u32 Data_FDC;
 //FDC_I2C及读写操作**************************************************
 
-//FDC IIC 延时函数
-void FDC_IIC_Delay(void)
-{
-	delay_us(2);
-}
-
-void FDC_GPIO_Init(void)
-{
-	
-}
-
-//初始化IIC I/O口
 void FDC_IIC_Init(void)
 {					     
-  GPIO_InitTypeDef  GPIO_InitStructure;
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);//先使能外设IO PORTC时钟 
-		
-  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4|GPIO_Pin_5;//端口配置
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; 		//推挽输出
-  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;		//IO口速度为50MHz
-  GPIO_Init(GPIOC, &GPIO_InitStructure);					    //根据设定参数初始化GPIO 
-	
-  GPIO_SetBits(GPIOC,GPIO_Pin_4|GPIO_Pin_5);				  //PC.4,PC.5 输出高	
+
+  I2C_DeInit(I2C1);
+  I2C_Init(I2C1,IICSPEED, FDC2214_ADDR, I2C_Mode_I2C,I2C_DutyCycle_2, I2C_Ack_Enable, I2C_AcknowledgedAddress_7bit);
+  I2C_Cmd(I2C1,ENABLE);
 }
 
-//产生IIC起始信号
-void FDC_IIC_Start(void)
-{
-	FDC_SDA_OUT();     //sda线输出
-	FDC_IIC_SDA=1;	  	  
-	FDC_IIC_SCL=1;
-	FDC_IIC_Delay();
- 	FDC_IIC_SDA=0;//START:when CLK is high,DATA change form high to low 
-	FDC_IIC_Delay();
-	FDC_IIC_SCL=0;//钳住I2C总线，准备发送或接收数据 
-}	  
-//产生IIC停止信号
-void FDC_IIC_Stop(void)
-{
-	FDC_SDA_OUT();//sda线输出
-	FDC_IIC_SCL=0;
-	FDC_IIC_SDA=0;//STOP:when CLK is high DATA change form low to high
- 	FDC_IIC_Delay();
-	FDC_IIC_SCL=1; 
-	FDC_IIC_SDA=1;//发送I2C总线结束信号
-	FDC_IIC_Delay();							   	
-}
-//等待应答信号到来
-//返回值：1，接收应答失败
-//        0，接收应答成功
-u8 FDC_IIC_Wait_Ack(void)
-{
-	u8 ucErrTime=0;
-	FDC_SDA_IN();      //SDA设置为输入  
-	FDC_IIC_SDA=1;FDC_IIC_Delay();	   
-	FDC_IIC_SCL=1;FDC_IIC_Delay();	 
-	while(FDC_READ_SDA)
-	{
-		ucErrTime++;
-		if(ucErrTime>250)
-		{
-			FDC_IIC_Stop();
-			return 1;
-		}
-	}
-	FDC_IIC_SCL=0;//时钟输出0 	   
-	return 0;  
-}
-//产生ACK应答
-void FDC_IIC_Ack(void)
-{
-	FDC_IIC_SCL=0;
-	FDC_SDA_OUT();
-	FDC_IIC_SDA=0;
-	FDC_IIC_Delay();
-	FDC_IIC_SCL=1;
-	FDC_IIC_Delay();
-	FDC_IIC_SCL=0;
-}
-//不产生ACK应答		    
-void FDC_IIC_NAck(void)
-{
-	FDC_IIC_SCL=0;
-	FDC_SDA_OUT();
-	FDC_IIC_SDA=1;
-	FDC_IIC_Delay();
-	FDC_IIC_SCL=1;
-	FDC_IIC_Delay();
-	FDC_IIC_SCL=0;
-}					 				     
-//IIC发送一个字节
-//返回从机有无应答
-//1，有应答
-//0，无应答			  
-void FDC_IIC_Send_Byte(u8 txd)
-{                        
-  u8 t;   
-	FDC_SDA_OUT(); 	    
-    FDC_IIC_SCL=0;//拉低时钟开始数据传输
-    for(t=0;t<8;t++)
-    {              
-        FDC_IIC_SDA=(txd&0x80)>>7;
-        txd<<=1; 	  
-		    FDC_IIC_SCL=1;
-		    FDC_IIC_Delay(); 
-		    FDC_IIC_SCL=0;	
-		    FDC_IIC_Delay();
-    }	 
-} 	    
-//读1个字节，ack=1时，发送ACK，ack=0，发送nACK   
-u8 FDC_IIC_Read_Byte(unsigned char ack)
-{
-	unsigned char i,receive=0;
-	FDC_SDA_IN();//SDA设置为输入
-    for(i=0;i<8;i++ )
-	{
-        FDC_IIC_SCL=0; 
-        FDC_IIC_Delay();
-		FDC_IIC_SCL=1;
-        receive<<=1;
-        if(FDC_READ_SDA)receive++;   
-		FDC_IIC_Delay(); 
-    }				 
-    if (!ack)
-        FDC_IIC_NAck();//发送nACK
-    else
-        FDC_IIC_Ack(); //发送ACK   
-    return receive;
+
+void delay_us (u8 i){
+  while (i--);
 }
 
 //FDC寄存器操作***********************************************************************
@@ -146,30 +28,42 @@ u8 FDC_IIC_Read_Byte(unsigned char ack)
  *     其他  错误代码
 */
 u8 Set_FDC2214(u8 reg,u8 MSB,u8 LSB) 				 
-{ 
-    FDC_IIC_Start(); 
-	FDC_IIC_Send_Byte((FDC2214_ADDR<<1)|0);//发送器件地址+写命令	
-	if(FDC_IIC_Wait_Ack())	//等待应答
-	{
-		FDC_IIC_Stop();		 
-		return 1;		
-	}
-    FDC_IIC_Send_Byte(reg);//写寄存器地址
-    FDC_IIC_Wait_Ack();		 //等待应答 
-	FDC_IIC_Send_Byte(MSB);  //发送数据1
-	if(FDC_IIC_Wait_Ack())	 //等待ACK
-	{
-		FDC_IIC_Stop();	 
-		return 1;		 
-	}		 
-	FDC_IIC_Send_Byte(LSB);  //发送数据2
-	if(FDC_IIC_Wait_Ack())	 //等待ACK
-	{
-		FDC_IIC_Stop();	 
-		return 1;		 
-	}	
-    FDC_IIC_Stop();	 
-	return 0;
+{   delay_us(10);
+    while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
+    
+    /* 发起始位 */
+    I2C_GenerateSTART(I2C1,ENABLE);
+    
+    /* 测试EV5 ，检测从器件返回一个应答信号*/
+    while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); 
+    
+    /* 设置I2C从器件地址，I2C主设备为写模式*/
+    I2C_Send7bitAddress(I2C1,FDC2214_ADDR, I2C_Direction_Transmitter);
+  
+    /* 测试EV6 ，检测从器件返回一个应答信号*/
+  while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+    
+  
+    I2C_SendData(I2C1,(u8)reg); 
+    /* 测试EV8 ，检测从器件返回一个应答信号*/
+    while (!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTING));  
+  
+    /* 不断往从设备写数据*/
+
+      
+      I2C_SendData(I2C1,MSB);
+      delay_us(10);
+      while (!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+      I2C_AcknowledgeConfig(I2C1,ENABLE);
+      I2C_SendData(I2C1,LSB);   
+      delay_us(10);      
+      while (!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+      I2C_AcknowledgeConfig(I2C1,ENABLE);
+  
+    /* 发结束位*/
+    I2C_GenerateSTOP(I2C1,ENABLE);
+      I2C_AcknowledgeConfig(I2C1,ENABLE);
+    return 0;
 }
 
 /*读取FDC2214寄存器数据
@@ -180,18 +74,49 @@ u8 Set_FDC2214(u8 reg,u8 MSB,u8 LSB)
 u16 FDC_Read(u8 reg)
 {
 	u16 res;
-   FDC_IIC_Start(); 
-	FDC_IIC_Send_Byte((FDC2214_ADDR<<1)|0);//发送器件地址+写命令	
-	FDC_IIC_Wait_Ack();		//等待应答 
-    FDC_IIC_Send_Byte(reg);	//写寄存器地址
-    FDC_IIC_Wait_Ack();		//等待应答
-    FDC_IIC_Start();
-	FDC_IIC_Send_Byte((FDC2214_ADDR<<1)|1);//发送器件地址+读命令	
-    FDC_IIC_Wait_Ack();		//等待应答 
-	res=FDC_IIC_Read_Byte(1)<<8;//读取数据,发送ACK
-	  
-	res|=FDC_IIC_Read_Byte(0);//读取数据,发送nACK
-    FDC_IIC_Stop();			//产生一个停止条件
+        delay_us(10);
+  /* 等待空闲 */
+    while(I2C_GetFlagStatus(I2C1,I2C_FLAG_BUSY));
+    /* 发起始位 */
+    I2C_GenerateSTART(I2C1,ENABLE);
+    /* 测试EV5 ，检测从器件返回一个应答信号*/
+    while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); 
+  
+    /* 设置I2C从器件地址，I2C主设备为写模式*/
+    I2C_Send7bitAddress(I2C1,FDC2214_ADDR, I2C_Direction_Transmitter);
+    /* 测试EV6 ，检测从器件返回一个应答信号*/
+    
+    while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+    I2C_SendData(I2C1,(u8)(reg)); 
+    /* 测试EV8 ，检测从器件返回一个应答信号*/
+    while (!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+        delay_us(10);   
+    /* 发起始位 */ 
+    I2C_GenerateSTART(I2C1,ENABLE);
+            delay_us(10); 
+    /* 测试EV5 ，检测从器件返回一个应答信号*/
+    while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_MODE_SELECT)); 
+          delay_us(10); 
+    /* 设置I2C从器件地址，I2C主设备为读模式*/
+    I2C_Send7bitAddress(I2C1,FDC2214_ADDR, I2C_Direction_Receiver);
+            delay_us(10); 
+    /* 测试EV6 ，检测从器件返回一个应答信号*/
+    while(!I2C_CheckEvent(I2C1,I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+        delay_us(100);    
+    /*读取数据 */
+       res= (u16) I2C_ReceiveData(I2C1)<<8;
+       
+//       I2C_AcknowledgeConfig(I2C1,ENABLE);
+        delay_us(100);
+        res +=   I2C_ReceiveData(I2C1);      
+       
+       I2C_AcknowledgeConfig(I2C1,DISABLE);
+       delay_us(100);
+      /* 发结束位*/
+       I2C_GenerateSTOP(I2C1,ENABLE);  
+       delay_us(10);
+       I2C_AcknowledgeConfig(I2C1,ENABLE);
+        
 	return res;		
 }
 
@@ -262,11 +187,9 @@ u32 FCD2214_ReadCH(u8 index)
 u8 FDC2214_Init(void)
 {
 	u16 res;
-	//FDC2214芯片IO口初始化
-	FDC_GPIO_Init();
+        FDC_IIC_Init();//i2c init
+        
 	
-	//软件IIC总线初始化
-	FDC_IIC_Init();
 	
 	//检测ID是否正确，再初始化寄存器
 	res=FDC_Read(MANUFACTURER_ID);

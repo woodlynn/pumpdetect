@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=1968292106
+Checksum=356576768
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -67,6 +67,13 @@ LogEnabled=0
 GraphEnabled=0
 ShowTimeLog=1
 ShowTimeSum=1
+[Breakpoints]
+Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
+Bp1=_ "STD_CODE" "{$PROJ_DIR$\stm8l15x_it.c}.232.1" 1 0 0 0 "" 0 ""
+Bp2=_ "STD_CODE" "{$PROJ_DIR$\capsensor.c}.25.9" 0 0 0 0 "" 0 ""
+Bp3=_ "STD_CODE" "{$PROJ_DIR$\fdc2214.c}.201.3" 1 0 0 0 "" 0 ""
+Bp4=_ "STD_CODE" "{$PROJ_DIR$\fdc2214.c}.196.2" 1 0 0 0 "" 0 ""
+Count=5
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""
@@ -74,11 +81,6 @@ Category=_ 0
 [TermIOLog]
 LoggingEnabled=_ 0
 LogFile=_ ""
-[Breakpoints]
-Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
-Bp1=_ "STD_CODE" "{$PROJ_DIR$\stm8l15x_it.c}.231.9" 1 0 0 0 "" 0 ""
-Bp2=_ "STD_CODE" "{$PROJ_DIR$\capsensor.c}.25.9" 1 0 0 0 "" 0 ""
-Count=3
 [Aliases]
 A0=_ "C:\Documents and Settings\Administrator\◊¿√Ê\∂Œ Ω“∫æß2\∂Œ Ω“∫æß\STM8L15x_StdPeriph_Driver\src\stm8l15x_gpio.c" ""
 A1=_ "D:\BaiduYunDownload\STM8L152-¿∂∆Ï«∂»Î Ω\¿˝≥Ã\∂Œ Ω“∫æß\∂Œ Ω“∫æß\lcd.c" ""

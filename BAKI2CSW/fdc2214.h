@@ -2,13 +2,29 @@
 #define __FDC2214_H
 
 #include "stm8l15x.h"
+#define GPIO_I2C   GPIOD
+#define GPIO_SDA   GPIO_Pin_6 
+#define GPIO_SCL   GPIO_Pin_7
+
+
+//IO方向设置
+#define FDC_SDA_IN()  { GPIO_Init(GPIO_I2C, GPIO_SDA,   GPIO_Mode_In_FL_No_IT );}
+#define FDC_SDA_OUT() { GPIO_Init(GPIO_I2C, GPIO_SDA,   GPIO_Mode_Out_PP_High_Fast);}
+
+//IO操作函数	 
+//#define FDC_IIC_SCL    PCout(4) 	//SCL
+#define FDC_IIC_SDA_1  GPIO_SetBits(GPIO_I2C,GPIO_SDA);
+#define FDC_IIC_SCL_1  GPIO_SetBits(GPIO_I2C,GPIO_SCL);
+#define FDC_IIC_SDA_0  GPIO_ResetBits(GPIO_I2C,GPIO_SDA);
+#define FDC_IIC_SCL_0  GPIO_ResetBits(GPIO_I2C,GPIO_SCL);
+
+
 
 
 /*FDC2214    iic从地址
  *ADDR = L , I2C Address = 0x2A
  *ADDR = H , I2C Address = 0x2B*/
-#define IICSPEED 100000 
-#define FDC2214_ADDR 0x54
+#define FDC2214_ADDR 0x2A
 
 /*FDC2214各个寄存器地址*/
 #define DATA_CH0 0x00     				//数据寄存器

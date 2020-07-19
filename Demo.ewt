@@ -31,6 +31,9 @@
       <name>$PROJ_DIR$\STM8L15x_StdPeriph_Driver\src\stm8l15x_gpio.c</name>
     </file>
     <file>
+      <name>$PROJ_DIR$\STM8L15x_StdPeriph_Driver\src\stm8l15x_i2c.c</name>
+    </file>
+    <file>
       <name>$PROJ_DIR$\STM8L15x_StdPeriph_Driver\src\stm8l15x_lcd.c</name>
     </file>
     <file>
@@ -43,7 +46,7 @@
   <group>
     <name>User</name>
     <file>
-      <name>$PROJ_DIR$\capsensor.c</name>
+      <name>$PROJ_DIR$\fdc2214.c</name>
     </file>
     <file>
       <name>$PROJ_DIR$\lcd.c</name>

@@ -228,12 +228,7 @@ INTERRUPT_HANDLER(EXTI6_IRQHandler,14)
     /* In order to detect unexpected events during development,
        it is recommended to set a breakpoint on the following instruction.
     */
-        EXTI_ClearITPendingBit (EXTI_IT_Pin6); //clear IT
-        	TimCap_H = TIM3->CNTRH;
-	TimCap_L = TIM3->CNTRL;
-	
-	TimCapAfter = ((TimCap_H&0xff)<<8)|((TimCap_L&0xff)<<0);
-      clearCapchargeflag();                     //clear flag go to the process
+ 
 }
 
 /**
