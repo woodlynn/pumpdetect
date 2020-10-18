@@ -9,7 +9,7 @@ TriggerName=main
 LimitSize=0
 ByteLimit=50
 [DebugChecksum]
-Checksum=356576768
+Checksum=1151224860
 [CallStack]
 ShowArgs=0
 [Disassembly]
@@ -71,9 +71,7 @@ ShowTimeSum=1
 Bp0=_ "STD_CODE" "0x00840A" 0 0 0 0 "" 0 ""
 Bp1=_ "STD_CODE" "{$PROJ_DIR$\stm8l15x_it.c}.232.1" 1 0 0 0 "" 0 ""
 Bp2=_ "STD_CODE" "{$PROJ_DIR$\capsensor.c}.25.9" 0 0 0 0 "" 0 ""
-Bp3=_ "STD_CODE" "{$PROJ_DIR$\fdc2214.c}.201.3" 1 0 0 0 "" 0 ""
-Bp4=_ "STD_CODE" "{$PROJ_DIR$\fdc2214.c}.196.2" 1 0 0 0 "" 0 ""
-Count=5
+Count=3
 [Log file]
 LoggingEnabled=_ 0
 LogFile=_ ""

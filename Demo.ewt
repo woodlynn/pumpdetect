@@ -66,6 +66,9 @@
     <file>
       <name>$PROJ_DIR$\stm8l15x_it.h</name>
     </file>
+    <file>
+      <name>$PROJ_DIR$\usart.c</name>
+    </file>
   </group>
 </project>
 

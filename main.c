@@ -7,6 +7,8 @@
 #include "stm8l15x.h"
 #include "lcd.h"
 #include "fdc2214.h"
+#include "usart.h"
+
 
 //定义LED与按键接口
 #define LED_GPIO_PORT  GPIOD
@@ -37,6 +39,21 @@ void Delay(uint16_t nCount)
 ****函数备注：断码液晶显示ADC转换后的电压值
 ****版权信息：蓝旗嵌入式系统
 *******************************************************************************/
+void SendData(u32 data){
+    u8 databuf[9],i;
+    for (i=8;i>0;i--){
+        databuf[i-1]=data%10;
+        databuf[i-1]+='0';
+
+        data/=10;
+    
+    }
+    databuf[8]=0;
+    USART1_SendStr(databuf); 
+    USART_SendData8(USART1,'\n');
+
+    
+}
 int main( void )
 {
     u32 CapValue;
@@ -68,7 +85,9 @@ int main( void )
      
     while(1){
     Delay (50000);      
-        CapValue=  FCD2214_ReadCH(0)/10000;
+    CapValue=  FCD2214_ReadCH(0);
+    SendData(CapValue);
+    CapValue/=10000;
     data_convertor(CapValue);
     Display();
  
