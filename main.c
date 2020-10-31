@@ -5,7 +5,7 @@
 ****Àý³Ì¼ò½é:STM8L152K4¿âÀý³ÌGPIOÀý³Ì
 *******************************************************************************/
 #include "stm8l15x.h"
-#include "lcd.h"
+//#include "lcd.h"
 #include "fdc2214.h"
 #include "usart.h"
 #include "Display.h"
@@ -91,7 +91,7 @@ int main( void )
     Delay (50000);      
     CapValue=  FCD2214_ReadCH(0);
     SendData(CapValue);
-    
+
   //  CapValue/=10000;
  //   data_convertor(CapValue);
  //   Display();
