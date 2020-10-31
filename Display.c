@@ -4,6 +4,7 @@
 void Display(void){
 
 }
+///////////////////////creater a coordinate by these codes ///////////
 void Display_coordinate (u8 longy,u8 offset){// the position of x and y
 	u8 x1,x2,y1,y2;
 	y1= LCD_Y- offset;
@@ -21,7 +22,7 @@ void Display_coordinate (u8 longy,u8 offset){// the position of x and y
 
 }
 
-void Display_tempdot(u16 temp,u8 zerolevel){
+void Display_tempdot(u16 temp,u8 zerolevel){ //roll graph
 	static u8 numberoftemp;
 	u8 x,y,i;
         if (numberoftemp>LCD_X)	{
@@ -48,3 +49,28 @@ void Display_tempdot(u16 temp,u8 zerolevel){
         
 
 }
+
+void Display_SensorData(u32 data){
+  u8 databuf[9],i;
+  for (i=8;i>0;i--){
+      databuf[i-1]=data%10;
+      databuf[i-1]+='0';
+      data/=10;
+  
+  }
+    databuf[8]=0;
+  SetXY(0.0); //set display location
+  for (i=0;i<8;i++){
+    WriteChar (databuf[i]);
+
+  }
+  
+
+
+}
+
+
+
+
+
+

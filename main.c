@@ -8,7 +8,7 @@
 #include "lcd.h"
 #include "fdc2214.h"
 #include "usart.h"
-
+#include "Display.h"
 
 //定义LED与按键接口
 #define LED_GPIO_PORT  GPIOD
@@ -67,8 +67,12 @@ int main( void )
 
     USART_Init(USART1,115200,USART_WordLength_8b,USART_StopBits_1,USART_Parity_No,USART_Mode_Tx);//USART初始化，115200，8N1
     USART_Cmd (USART1,ENABLE);//使能USART
- 
-    InitLCD();                                  //lcd enable
+    
+  //  InitLCD();                  //lcd disabled
+    LcdPortInit();                  //use 5110lcd
+
+
+
 
 
     GPIO_Init(GPIOC, GPIO_Pin_0,   GPIO_Mode_In_FL_No_IT );
@@ -87,9 +91,11 @@ int main( void )
     Delay (50000);      
     CapValue=  FCD2214_ReadCH(0);
     SendData(CapValue);
-    CapValue/=10000;
-    data_convertor(CapValue);
-    Display();
+    
+  //  CapValue/=10000;
+ //   data_convertor(CapValue);
+ //   Display();
+
  
     }
 
