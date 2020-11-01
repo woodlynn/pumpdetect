@@ -78,11 +78,11 @@ int main( void )
     GPIO_Init(GPIOC, GPIO_Pin_0,   GPIO_Mode_In_FL_No_IT );
     GPIO_Init(GPIOC, GPIO_Pin_1,   GPIO_Mode_In_FL_No_IT );
     FDC2214_Init();    
-    data_convertor(2990);
-    Display();
+//    data_convertor(2990);
+//    Display();
 
-    data_convertor(CapValue);
-    Display();
+//    data_convertor(CapValue);
+//    Display();
     CapValue= FCD2214_ReadCH(0);
     
      
@@ -90,8 +90,9 @@ int main( void )
     while(1){
     Delay (50000);      
     CapValue=  FCD2214_ReadCH(0);
-    SendData(CapValue);
-
+    
+	Usart_send_SensorData(CapValue);//use usart to send data 20201101
+	Display_SensorData(CapValue);
   //  CapValue/=10000;
  //   data_convertor(CapValue);
  //   Display();

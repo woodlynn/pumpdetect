@@ -16,3 +16,19 @@ void USART1_SendStr(unsigned char *Str)
             Str++;//下一个数据
         }
 }
+
+
+void Usart_send_SensorData(u32 data){
+  u8 databuf[9],i;
+  for (i=8;i>0;i--){
+      databuf[i-1]=data%10;
+      databuf[i-1]+='0';
+      data/=10;
+  
+  }
+    databuf[8]=0;
+  
+  USART1_SendStr (databuf);
+  }
+  
+
